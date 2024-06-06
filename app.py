@@ -67,6 +67,8 @@ def scrape_data(sb, address):
         sb.sleep(10)
         print("buttons clicked")
 
+        print(sb.get_current_url())
+
         # find all the owners report button
         owners = sb.find_elements(
             "#possible-owners-section button:contains('View Person Report')",
