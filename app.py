@@ -58,12 +58,14 @@ def scrape_data(sb, address):
     try:
         # search for property
         print("scraping started")
+        print(sb.get_current_url())
         sb.driver.uc_click('button:contains("Property")')
         sb.sleep(2)
         sb.press_keys("input", address, by="css selector", timeout=None)
         sb.sleep(2)
         sb.driver.uc_click('button:contains("Search")', 5)
         sb.sleep(10)
+        print("buttons clicked")
 
         # find all the owners report button
         owners = sb.find_elements(
@@ -140,6 +142,8 @@ def scrape_data(sb, address):
 
             print("scraping finished")
 
+            print("data")
+
             # print the data
             print("Phone No.: " + "".join(str(phone_no) for phone_no in phone_nos))
             print("Emails: " + "".join(str(email) for email in emails))
@@ -183,6 +187,7 @@ def scrape_data(sb, address):
 
 
 def initial(address):
+    print("inside thread")
     try:
         with SB(uc=True, undetectable=True) as sb:
             # open dashboard url
