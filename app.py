@@ -72,6 +72,8 @@ def scrape_data(sb, address):
             "#possible-owners-section button:contains('View Person Report')",
         )
 
+        print(len(owners))
+
         # if there are no owners simply return a response to user with no user found
         if owners == 0:
             sb.driver.quit()
@@ -80,6 +82,8 @@ def scrape_data(sb, address):
 
         # now we have to loop through all of the owners to collect their data
         original_window_handle = sb.driver.current_window_handle
+
+        print(original_window_handle)
 
         owners_data = []
 
