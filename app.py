@@ -57,6 +57,7 @@ def load_cookies(sb):
 def scrape_data(sb, address):
     try:
         # search for property
+        print("scraping started")
         sb.driver.uc_click('button:contains("Property")')
         sb.sleep(2)
         sb.press_keys("input", address, by="css selector", timeout=None)
@@ -137,6 +138,8 @@ def scrape_data(sb, address):
                 for i in range(len(social_els)):
                     socials.append(social_els[i].get_attribute("href"))
 
+            print("scraping finished")
+
             # print the data
             print("Phone No.: " + "".join(str(phone_no) for phone_no in phone_nos))
             print("Emails: " + "".join(str(email) for email in emails))
@@ -195,6 +198,8 @@ def initial(address):
             sb.driver.uc_open_with_reconnect(DASHBOARD_URL, reconnect_time=20)
             sb.sleep(25)
 
+            print("cookies loaded")
+
             # Check Now if we are on login page or dashboard page
             if sb.get_current_url() == LOGIN_URL:
 
@@ -205,6 +210,8 @@ def initial(address):
                 # now login
                 login(sb=sb)
                 sb.sleep(25)
+
+            print("logged in")
 
             # save cookies
             save_cookies(sb=sb)
@@ -227,8 +234,12 @@ def scrape_endpoint():
     data = request.json
     address = data.get("address", "")
 
+    print("got address")
+
     if not address:
         return jsonify({"error", "Address is required"}), 400
+
+    print("starting thread")
 
     thread = threading.Thread(target=initial, args=(address,))
     thread.start()
