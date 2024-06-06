@@ -64,10 +64,16 @@ def scrape_data(sb, address):
         sb.press_keys("input", address, by="css selector", timeout=None)
         sb.sleep(2)
         sb.driver.uc_click('button:contains("Search")', 5)
-        sb.sleep(10)
+        sb.sleep(15)
         print("buttons clicked")
 
+        sb.maximize_window()
+
         print(sb.get_current_url())
+
+        print(
+            sb.is_text_visible("View Person Report", selector="html", by="css selector")
+        )
 
         # find all the owners report button
         owners = sb.find_elements(
