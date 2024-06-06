@@ -76,6 +76,10 @@ def scrape_data(sb, address):
             sb.is_text_visible("View Person Report", selector="html", by="css selector")
         )
 
+        print(
+            sb.is_text_visible("No results found", selector="html", by="css selector")
+        )
+
         # find all the owners report button
         owners = sb.find_elements(
             "#possible-owners-section button:contains('View Person Report')",
