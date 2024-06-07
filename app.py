@@ -81,7 +81,7 @@ def scrape_data(sb, address):
         # print(
         #     sb.find_text(
         #         "No results found", selector="html", by="css selector", timeout=None
-        #     )
+        #    )
         # )
 
         # find all the owners report button
