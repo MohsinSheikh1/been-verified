@@ -86,13 +86,13 @@ def scrape_data(sb, address):
         sb.find_element(
             "#possible-owners-section button:contains('View Person Report')",
             by="css selector",
-            timeout=50,
+            timeout=100,
         )
         owners = sb.find_elements(
             "#possible-owners-section button:contains('View Person Report')",
         )
 
-        sb.sleep(55)
+        sb.sleep(110)
 
         print(len(owners))
 
