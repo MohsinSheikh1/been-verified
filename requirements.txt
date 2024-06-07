@@ -1,5 +1,5 @@
 Flask==3.0.3
+setuptools>=69.5.1
 gunicorn==22.0.0
 Requests==2.31.0
 seleniumbase==4.27.0
-setuptools>=69.5.1
