@@ -59,17 +59,16 @@ def scrape_data(sb, address):
         # search for property
         print("scraping started")
         print(sb.get_current_url())
-        sb.driver.uc_click('button:contains("Property")')
-        sb.sleep(2)
+        sb.driver.uc_click('button:contains("Property")', 4)
+        sb.sleep(5)
         sb.press_keys("input", address, by="css selector", timeout=None)
-        sb.sleep(2)
+        sb.sleep(6)
         sb.driver.uc_click('button:contains("Search")', 9)
         sb.sleep(40)
         print("buttons clicked")
         print(sb.get_current_url())
         # print(sb.get_page_source())
         print(sb.get_title())
-        sb.scroll_to_top()
         # sb.sleep(60)
         # print(
         #     sb.find_text(
