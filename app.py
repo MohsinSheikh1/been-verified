@@ -63,14 +63,12 @@ def scrape_data(sb, address):
         sb.sleep(2)
         sb.press_keys("input", address, by="css selector", timeout=None)
         sb.sleep(2)
-        sb.driver.uc_click('button:contains("Search")', 5)
-        sb.sleep(15)
+        sb.driver.uc_click('button:contains("Search")', 9)
+        sb.sleep(40)
         print("buttons clicked")
-
-        sb.maximize_window()
-
         print(sb.get_current_url())
-        print(sb.get_page_source())
+        # print(sb.get_page_source())
+        print(sb.get_title())
         sb.scroll_to_top()
         # sb.sleep(60)
         # print(
@@ -85,9 +83,16 @@ def scrape_data(sb, address):
         # )
 
         # find all the owners report button
+        sb.find_element(
+            "#possible-owners-section button:contains('View Person Report')",
+            by="css selector",
+            timeout=50,
+        )
         owners = sb.find_elements(
             "#possible-owners-section button:contains('View Person Report')",
         )
+
+        sb.sleep(55)
 
         print(len(owners))
 
@@ -210,7 +215,7 @@ def scrape_data(sb, address):
 def initial(address):
     print("inside thread")
     try:
-        with SB(uc=True, undetectable=True, headless2=True) as sb:
+        with SB(uc=True, undetectable=True) as sb:
             # open dashboard url
             sb.sleep(5)
             sb.driver.uc_open_with_reconnect(DASHBOARD_URL, 20)
