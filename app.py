@@ -70,15 +70,18 @@ def scrape_data(sb, address):
         sb.maximize_window()
 
         print(sb.get_current_url())
-        # print(sb.get_page_source())
+        print(sb.get_page_source())
         sb.scroll_to_top()
-        sb.sleep(20)
+        sb.sleep(60)
         print(
-            sb.is_text_visible("View Person Report", selector="html", by="css selector")
+            sb.find_text(
+                "View Person Report", selector="html", by="css selector", timeout=None
+            )
         )
-
         print(
-            sb.is_text_visible("No results found", selector="html", by="css selector")
+            sb.find_text(
+                "No results found", selector="html", by="css selector", timeout=None
+            )
         )
 
         # find all the owners report button
