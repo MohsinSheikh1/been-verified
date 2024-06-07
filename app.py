@@ -214,7 +214,7 @@ def scrape_data(sb, address):
 def initial(address):
     print("inside thread")
     try:
-        with SB(uc=True, undetectable=True, proxy="192.73.244.36:80") as sb:
+        with SB(uc=True, undetectable=True) as sb:
             # open dashboard url
             sb.sleep(5)
             sb.driver.uc_open_with_reconnect(DASHBOARD_URL, 20)
