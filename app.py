@@ -70,8 +70,9 @@ def scrape_data(sb, address):
         sb.maximize_window()
 
         print(sb.get_current_url())
-        print(sb.get_page_source())
-
+        # print(sb.get_page_source())
+        sb.scroll_to_top()
+        sb.sleep(20)
         print(
             sb.is_text_visible("View Person Report", selector="html", by="css selector")
         )
